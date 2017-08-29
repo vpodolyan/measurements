@@ -4,18 +4,18 @@ import PropTypes from 'prop-types';
 import Measure from './Measure';
 import SimpleValue from './SimpleValue';
 
-const Pressure = (props, context) => {
+const Serial = (props, context) => {
     const {data} = context; 
 
     return (
         <div>
-            {data && data.Pressure && <Measure {...data.Pressure} ValueElement={SimpleValue} />}
+            {data && data.Serial && <Measure {...data.Serial} ValueElement={SimpleValue}/>}
         </div>
     )
 }
 
-Pressure.contextTypes = {
+Serial.contextTypes = {
     data: PropTypes.object
 }
 
-export default Pressure;
+export default Serial;

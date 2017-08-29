@@ -12,7 +12,7 @@ export default class Measure extends React.Component {
     }
 
     render () {
-        const {measurements, name, unit} = this.props;
+        const {measurements, name, unit, ValueElement} = this.props;
         
         return (
             <div>
@@ -22,7 +22,7 @@ export default class Measure extends React.Component {
                         measurements.map(item => (
                             <div key={item[0]}>
                                 <div>t = {new Date(item[0]).toLocaleString()}</div>
-                                <div>v = {`${item[1]} ${unit}`}</div>
+                                <div>v = <ValueElement value={item[1]} unit={unit}/></div>
                             </div>
                         ))
                     }
