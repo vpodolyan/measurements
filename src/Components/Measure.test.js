@@ -1,8 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import {Measure} from './Measure';
+import { mount } from 'enzyme';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Measure />, div);
-});
+import Measure from './Measure';
+
+it('renders ValueElement correctly', () => {
+    const txt = 'text';
+    const element = () => (<span className="awesome-element">{txt}</span>);
+
+    const wrapper = mount(
+        <Measure measurements={[1, 2]} ValueElement={element} />
+    );
+
+    const span = wrapper.find('.awesome-element').first();
+    expect(span.text()).toBe(txt);
+})

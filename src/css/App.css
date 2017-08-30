@@ -22,3 +22,11 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.measure {
+  height: 20em;
+}
+
+.measure .item {
+  padding: 4px 0;
+}

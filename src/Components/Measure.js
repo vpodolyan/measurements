@@ -19,8 +19,8 @@ export default class Measure extends React.Component {
                 <h3>{name}</h3>
                 <div>
                 {
-                        measurements.map(item => (
-                            <div key={item[0]}>
+                    measurements.map(item => (
+                            <div key={item[0]} className="item">
                                 <div>t = {new Date(item[0]).toLocaleString()}</div>
                                 <div>v = <ValueElement value={item[1]} unit={unit}/></div>
                             </div>

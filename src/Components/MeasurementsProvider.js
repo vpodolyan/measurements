@@ -5,21 +5,30 @@ export default class MeasurementsProvider extends React.Component {
     static childContextTypes = {
         data: PropTypes.object
     }
-    
+
     state = {
         data: {}
     }
 
     eventSource = null;
 
+    constructor(props) {
+        super(props);
+
+        this.eventSource = props.evenSource || new EventSource('https://jsdemo.envdev.io/sse');
+    }
+
     getChildContext() {
         return { data: this.state.data };
     }
 
     componentWillMount() {
-        this.eventSource = new EventSource('https://jsdemo.envdev.io/sse');
+        if (!this.eventSource) {
+            return;
+        }
+
         this.eventSource.onmessage = (e) => {
-            
+
             const data = JSON.parse(e.data);
 
             const result = data.reduce((obj, item) => {
@@ -42,7 +51,6 @@ export default class MeasurementsProvider extends React.Component {
     render() {
         return (
             <div>
-                <h1>Measurements Provider</h1>
                 {this.props.children}
             </div>
         )
